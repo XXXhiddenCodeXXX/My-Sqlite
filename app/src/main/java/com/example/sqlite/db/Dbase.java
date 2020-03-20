@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 /**
@@ -41,11 +42,8 @@ public class Dbase {
             values.put(Const.NAMA_MAHASISWA,  nama);
             values.put(Const.NIM, nim);
 
-            long result = db.insert(Const.TABLE_NAME, null, values);
-            Log.e(Const.TAG, "insertData: " + result);
-
             return db.insert(Const.TABLE_NAME, null, values);
-        } catch (Exception e) {
+        } catch (SQLiteException e) {
             return -1;
         }
     }
@@ -58,10 +56,7 @@ public class Dbase {
     // get all data
     public Cursor getAllData() {
         return db.query(Const.TABLE_NAME,
-                new String[]{Const.ID_MAHASISWA,
-                        Const.NAMA_MAHASISWA,
-                        Const.NIM},
-                null, null, null, null, null);
+                null, null, null, null, null, Const.ID_MAHASISWA + " ASC");
     }
 
     // edit data

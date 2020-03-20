@@ -1,5 +1,6 @@
 package com.example.sqlite.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,20 @@ import java.util.List;
  */
 public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.ListViewHolder> {
 
-    private List<Mahasiswa> mahasiswa = new ArrayList<>();
+    private List<Mahasiswa> listMahasiswa;
     private Context context;
 
-    public MahasiswaAdapter(List<Mahasiswa> mahasiswa, Context context) {
-        this.mahasiswa = mahasiswa;
+    public MahasiswaAdapter(Context context, List<Mahasiswa> listMahasiswa) {
         this.context = context;
+        this.listMahasiswa = listMahasiswa;
     }
+
+    public void addItem(Mahasiswa mahasiswa) {
+        this.listMahasiswa.add(mahasiswa);
+        notifyItemInserted(listMahasiswa.size() - 1);
+//        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -37,15 +45,16 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.List
         return new ListViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        holder.tvName.setText(mahasiswa.get(position).getName());
-        holder.tvNim.setText(mahasiswa.get(position).getNim());
+        holder.tvName.setText("Nama : " + listMahasiswa.get(position).getName());
+        holder.tvNim.setText("NIM : " + listMahasiswa.get(position).getNim());
     }
 
     @Override
     public int getItemCount() {
-        return mahasiswa.size();
+        return listMahasiswa.size();
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
