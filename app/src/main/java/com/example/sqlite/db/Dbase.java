@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.util.Log;
 
 /**
  * Created by David Sanjaya on 3/16/2020
@@ -36,7 +35,7 @@ public class Dbase {
     }
 
     // add data
-    public long insertData(String nama, String nim) {
+    public long insertData(String nama, int nim) {
         try {
             ContentValues values = new ContentValues();
             values.put(Const.NAMA_MAHASISWA,  nama);

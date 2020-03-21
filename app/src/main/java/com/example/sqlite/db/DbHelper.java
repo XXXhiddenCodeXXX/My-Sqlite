@@ -15,7 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
             Const.TABLE_NAME + " (" +
             Const.ID_MAHASISWA + " integer primary key autoincrement, " +
             Const.NAMA_MAHASISWA + " text not null, " +
-            Const.NIM + " text not null);";
+            Const.NIM + " integer not null);";
 
     public DbHelper(Context context, String name, SQLiteDatabase.CursorFactory f, int version) {
         super(context, name, f, version);

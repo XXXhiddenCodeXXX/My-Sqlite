@@ -8,10 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +22,6 @@ import com.example.sqlite.db.Dbase;
 import com.example.sqlite.model.Mahasiswa;
 import com.example.sqlite.ui.FormDataActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             do {
                 String id = cursor.getString(0);
                 String name = cursor.getString(1);
-                String nim = cursor.getString(2);
+                int nim = cursor.getInt(2);
 
                 mahasiswa = new Mahasiswa();
                 mahasiswa.setId(id);
@@ -96,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 mahasiswa.setNim(nim);
                 listMahasiswa.add(mahasiswa);
                 Log.e(Const.TAG, "id: " + id);
-
-//                listMhs.add(id + name + nim);
 
             } while (cursor.moveToNext());
         }

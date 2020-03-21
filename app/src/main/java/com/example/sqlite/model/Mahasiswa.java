@@ -10,7 +10,7 @@ import android.os.Parcelable;
 public class Mahasiswa implements Parcelable {
     private String id;
     private String name;
-    private String nim;
+    private int nim;
 
     public Mahasiswa() {
 
@@ -19,7 +19,7 @@ public class Mahasiswa implements Parcelable {
     protected Mahasiswa(Parcel in) {
         id = in.readString();
         name = in.readString();
-        nim = in.readString();
+        nim = in.readInt();
     }
 
     public static final Creator<Mahasiswa> CREATOR = new Creator<Mahasiswa>() {
@@ -50,11 +50,11 @@ public class Mahasiswa implements Parcelable {
         this.name = name;
     }
 
-    public String getNim() {
+    public int getNim() {
         return nim;
     }
 
-    public void setNim(String nim) {
+    public void setNim(int nim) {
         this.nim = nim;
     }
 
@@ -67,6 +67,6 @@ public class Mahasiswa implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
         parcel.writeString(name);
-        parcel.writeString(nim);
+        parcel.writeInt(nim);
     }
 }

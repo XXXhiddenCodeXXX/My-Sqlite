@@ -13,10 +13,11 @@
         android:background="@drawable/custom_edt_text"
         android:padding="8dp"
         android:layout_margin="8dp"
+        android:maxLength="30"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="text"/>
+        android:inputType="textCapCharacters"/>
     <EditText
         android:id="@+id/edt_nim"
         android:layout_width="match_parent"
@@ -28,7 +29,8 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="text"/>
+        android:inputType="number"
+        android:maxLength="9"/>
 
     <Button
         android:id="@+id/btn_action"

@@ -5,7 +5,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sqlite.R;
 import com.example.sqlite.model.Mahasiswa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,6 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.List
     public void addItem(Mahasiswa mahasiswa) {
         this.listMahasiswa.add(mahasiswa);
         notifyItemInserted(listMahasiswa.size() - 1);
-//        notifyDataSetChanged();
     }
 
 
@@ -50,6 +50,27 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.List
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         holder.tvName.setText("Nama : " + listMahasiswa.get(position).getName());
         holder.tvNim.setText("NIM : " + listMahasiswa.get(position).getNim());
+        holder.tvOption.setOnClickListener(view -> {
+            // Create popup menu
+            PopupMenu popupMenu = new PopupMenu(context, holder.tvOption);
+            // inflate menu from xml res
+            popupMenu.inflate(R.menu.option_menu);
+            // add click listener
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_edit :
+                        Toast.makeText(context, "Edit", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_delete :
+                        Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return false;
+            });
+            // display the popup menu
+            popupMenu.show();
+        });
     }
 
     @Override
@@ -57,14 +78,15 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.List
         return listMahasiswa.size();
     }
 
-    public class ListViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvNim;
+    static class ListViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvName, tvNim, tvOption;
 
-        public ListViewHolder(@NonNull View itemView) {
+        ListViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tv_name);
             tvNim = itemView.findViewById(R.id.tv_nim);
+            tvOption = itemView.findViewById(R.id.tv_option);
         }
     }
 }

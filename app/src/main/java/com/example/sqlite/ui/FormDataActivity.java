@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,11 +66,11 @@ public class FormDataActivity extends AppCompatActivity {
                 edtNim.setError("Field is required!!!");
             } else {
                 mahasiswa.setName(name);
-                mahasiswa.setNim(nim);
+                mahasiswa.setNim(Integer.parseInt(nim));
                 intent.putExtra(EXTRA_DATA, mahasiswa);
 
                 db.open();
-                long result = db.insertData(name, nim);
+                long result = db.insertData(name, Integer.parseInt(nim));
                 Log.e(Const.TAG, "actionInsert: " + result);
                 if (result > 0)
                     Toast.makeText(getApplicationContext(), "Success added !", Toast.LENGTH_SHORT).show();
