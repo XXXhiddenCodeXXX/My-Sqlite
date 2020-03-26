@@ -8,7 +8,7 @@ import android.os.Parcelable;
  * Sqlite
  */
 public class Mahasiswa implements Parcelable {
-    private String id;
+    private int id;
     private String name;
     private int nim;
 
@@ -17,7 +17,7 @@ public class Mahasiswa implements Parcelable {
     }
 
     protected Mahasiswa(Parcel in) {
-        id = in.readString();
+        id = in.readInt();
         name = in.readString();
         nim = in.readInt();
     }
@@ -34,11 +34,11 @@ public class Mahasiswa implements Parcelable {
         }
     };
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,7 +65,7 @@ public class Mahasiswa implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
+        parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeInt(nim);
     }

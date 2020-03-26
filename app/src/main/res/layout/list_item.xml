@@ -31,20 +31,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name"
             tools:text="190030001" />
-
-        <TextView
-            android:id="@+id/tv_option"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:text="@string/_8942"
-            android:textAlignment="center"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_nim"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tv_name"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +32,15 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+import static com.example.sqlite.ui.FormDataActivity.EXTRA_DATA;
+import static com.example.sqlite.ui.FormDataActivity.EXTRA_ID;
+import static com.example.sqlite.ui.FormDataActivity.EXTRA_ITEM;
+import static com.example.sqlite.ui.FormDataActivity.EXTRA_POSITION;
+import static com.example.sqlite.ui.FormDataActivity.JUST_NAME;
+import static com.example.sqlite.ui.FormDataActivity.REQ_UPDATE;
+import static com.example.sqlite.ui.FormDataActivity.RESULT_DEL;
+
+public class MainActivity extends AppCompatActivity implements MahasiswaAdapter.OnClickItemListener {
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
@@ -57,13 +67,12 @@ public class MainActivity extends AppCompatActivity {
         actionToForm();
 
         // set adapter
-        mahasiswaAdapter = new MahasiswaAdapter(this, listMahasiswa);
+        mahasiswaAdapter = new MahasiswaAdapter(this, listMahasiswa,this);
         rvDataMhs.setLayoutManager(new LinearLayoutManager(this));
         rvDataMhs.setHasFixedSize(true);
         rvDataMhs.setAdapter(mahasiswaAdapter);
         mahasiswaAdapter.notifyDataSetChanged();
         retrieve();
-
     }
 
     private void actionToForm() {
@@ -83,11 +92,12 @@ public class MainActivity extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             do {
                 String id = cursor.getString(0);
+                int fId = Integer.valueOf(id);
                 String name = cursor.getString(1);
                 int nim = cursor.getInt(2);
 
                 mahasiswa = new Mahasiswa();
-                mahasiswa.setId(id);
+                mahasiswa.setId(fId);
                 mahasiswa.setName(name);
                 mahasiswa.setNim(nim);
                 listMahasiswa.add(mahasiswa);
@@ -141,8 +151,43 @@ public class MainActivity extends AppCompatActivity {
                     mahasiswaAdapter.addItem(mahasiswa);
                     rvDataMhs.smoothScrollToPosition(mahasiswaAdapter.getItemCount() - 1);
                     tvNoData.setVisibility(View.GONE);
+                    retrieve();
+                    Log.e(Const.TAG, "onActivityResult: Success ADD");
+                }
+            } else if (requestCode == FormDataActivity.REQ_UPDATE) {
+                if (resultCode == RESULT_OK) {
+                    Mahasiswa mahasiswa = data.getParcelableExtra(FormDataActivity.EXTRA_DATA);
+                    int position = data.getIntExtra(EXTRA_POSITION, 0);
+                    mahasiswaAdapter.updateItem(position, mahasiswa);
+                    rvDataMhs.smoothScrollToPosition(position);
+                    retrieve();
+                    Log.e(Const.TAG, "onActivityResult: Success UPDATE " + position);
+                } else if (resultCode == RESULT_DEL) {
+                    int position = data.getIntExtra(EXTRA_POSITION, 0);
+                    Log.e(Const.TAG, "onActivityResult: " + position);
+                    mahasiswaAdapter.removeData(position);
+
+                    if (!(listMahasiswa.size() < 1)) {
+                        mahasiswaAdapter.notifyDataSetChanged();
+                        Log.e(Const.TAG, "size: " + listMahasiswa.size());
+                        tvNoData.setVisibility(View.GONE);
+                    } else  {
+                        tvNoData.setText("-No Data-");
+                        tvNoData.setVisibility(View.VISIBLE);
+                        Log.e(Const.TAG, "retrieve: no data");
+                    }
                 }
             }
         }
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(getApplicationContext(), FormDataActivity.class);
+        intent.putExtra(EXTRA_POSITION, position);
+        intent.putExtra(EXTRA_DATA, listMahasiswa.get(position));
+        intent.putExtra(EXTRA_ID, listMahasiswa.get(position).getId());
+        intent.putExtra(JUST_NAME, listMahasiswa.get(position).getName());
+        startActivityForResult(intent, REQ_UPDATE);
     }
 }

@@ -6,21 +6,23 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b7e95c-4018-4a65-b349-bcfeed5dde67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/option_menu.xml" afterDir="false" />
+    <list default="true" id="99b7e95c-4018-4a65-b349-bcfeed5dde67" name="Default Changelist" comment="Update UI design&#10;Adding update data&#10;Adding delete data">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/CustomOnItemClickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete_white_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/adapter/MahasiswaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/adapter/MahasiswaAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/db/DbHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/db/DbHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/db/Dbase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/db/Dbase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/model/Mahasiswa.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/model/Mahasiswa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/ui/FormDataActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sqlite/ui/FormDataActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_form_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_form_data.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/option_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/option_menu.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +47,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,7 +61,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GuestApp-Tenant" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Kelas Dicoding Expert/MyNotesApp" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
@@ -185,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584713381186</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update validate editText.&#10;Update UI design.&#10;Adding option menu in data item.">
+      <created>1584752354794</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584752354794</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +214,7 @@
     <MESSAGE value="First project" />
     <MESSAGE value="Update insert data to sqlite" />
     <MESSAGE value="Update insert data to sqlite and show data to view.&#10;Update UI design form." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update insert data to sqlite and show data to view.&#10;Update UI design form." />
+    <MESSAGE value="Update validate editText.&#10;Update UI design.&#10;Adding option menu in data item." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update validate editText.&#10;Update UI design.&#10;Adding option menu in data item." />
   </component>
 </project>

@@ -48,7 +48,7 @@ public class Dbase {
     }
 
     // delete data
-    public boolean deleteData(long key) {
+    public boolean deleteData(int key) {
         return db.delete(Const.TABLE_NAME, Const.ID_MAHASISWA + "=" + key, null) > 0;
     }
 
@@ -59,7 +59,7 @@ public class Dbase {
     }
 
     // edit data
-    public boolean updateData(long key, String name, String nim) {
+    public boolean updateData(int key, String name, String nim) {
         ContentValues values = new ContentValues();
         values.put(Const.NAMA_MAHASISWA, name);
         values.put(Const.NIM, nim);
