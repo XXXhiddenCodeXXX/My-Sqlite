@@ -138,7 +138,11 @@ public class FormDataActivity extends AppCompatActivity {
             String name = edtName.getText().toString();
             String nim = edtNim.getText().toString();
             mahasiswa.setName(name);
-            mahasiswa.setNim(Integer.parseInt(nim));
+            try {
+                mahasiswa.setNim(Integer.parseInt(nim));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             Intent intent = new Intent();
             intent.putExtra(EXTRA_POSITION, position);
