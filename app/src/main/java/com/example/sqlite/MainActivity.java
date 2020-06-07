@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MahasiswaAdapter.
     @SuppressLint("SetTextI18n")
     private void retrieve() {
         listMahasiswa.clear();
-         dbase.open();
+        dbase.open();
 
         Cursor cursor = dbase.getAllData();
 
